@@ -81,4 +81,33 @@ def encuentra_chr(texto,letra):
         return -1
 
 def encuentra_str(texto,cadena):
-    return False
+    salida=False
+    if cadena in texto:
+        for i in range(len(texto)):
+            if texto[i] == cadena[0]:
+                for j in range(1,len(cadena)):
+                    if texto[i] == cadena[j]:
+                        pass
+                    else:
+                        return i
+                        break  
+    else:
+        return -1
+
+def reemplaza_chr(texto,cadena1,cadena2):
+    salida=[]
+    salidaStr=""
+    if len(cadena1) == 1 and len(cadena2) == 1:
+        for i in range(len(texto)):
+            if texto[i] == cadena1:
+                salida.append(cadena2)
+            else:
+                salida.append(texto[i])
+    else:
+        return ""
+    
+    for i in range(len(salida)):
+        salidaStr+=salida[i]
+    return salidaStr
+
+
