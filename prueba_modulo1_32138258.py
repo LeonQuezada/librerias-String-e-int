@@ -179,18 +179,18 @@ print()
 
 #----------------Prueba 8---------------------
 
-A="hola como estas"
+A="holass"
 B="que tal amigo"
 
-letra1="o"
-letra2="a"
-patron="z"
+letra1="la"
+letra2="am"
+patron="zs"
 
-A1=reemplaza_chr(A,letra1,patron)
-B1=reemplaza_chr(B,letra2,patron)
+A1=reemplaza_str(A,letra1,patron)
+B1=reemplaza_str(B,letra2,patron)
 
-A2=my_strtr(A,{'o':'z'})
-B2=my_strtr(B,{'a':'z'})
+A2=my_strtr(A,{'la':'zs'})
+B2=my_strtr(B,{'am':'zs'})
 
 print( "Demostramos ahora la función reemplaza_str" )
 print( "con los strings '",A,"' y '",B,"'"," Con el patron: ","'" ,patron, "'"," Con el letra1: ","'" ,letra1, "'"," Con el letra2: ","'" ,letra2, "'", sep="")
