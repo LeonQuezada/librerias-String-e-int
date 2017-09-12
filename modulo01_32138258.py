@@ -31,7 +31,7 @@ def es_alfa(texto):
 def es_digito(entero):
     salida = False
     for i in range(len(str(entero))):
-        if str(entero)[i] not in DIGITOS_DECIMALES:
+        if str(entero)[i] in DIGITOS_DECIMALES:
             salida=True
         else:
             salida=False
@@ -42,24 +42,6 @@ def a_minus(texto):
     nuevoTexto=[]
     salidaTexto=""
     for i in range(len(texto)):
-        if not es_digito(texto[i]):
-            nuevoTexto.append(texto[i])
-        if texto[i] in MAYUSCULAS_SPA_UNICODE:
-            nuevoTexto.append(texto[i])
-        else:
-            for j in range(len(MINUSCULAS_SPA_UNICODE)):
-                if MINUSCULAS_SPA_UNICODE[j] == texto[i]:
-                    nuevoTexto.append(MAYUSCULAS_SPA_UNICODE[j])
-    for i in range(len(nuevoTexto)):
-        salidaTexto+=nuevoTexto[i]
-    return salidaTexto
-
-def a_mayus(texto):
-    nuevoTexto=[]
-    salidaTexto=""
-    for i in range(len(texto)):
-        if not es_digito(texto[i]):
-            nuevoTexto.append(texto[i])
         if texto[i] in MINUSCULAS_SPA_UNICODE:
             nuevoTexto.append(texto[i])
         else:
@@ -70,29 +52,45 @@ def a_mayus(texto):
         salidaTexto+=nuevoTexto[i]
     return salidaTexto
 
+def a_mayus(texto):
+    nuevoTexto=[]
+    salidaTexto=""
+    for i in range(len(texto)):
+        if texto[i] in MAYUSCULAS_SPA_UNICODE:
+            nuevoTexto.append(texto[i])
+        else:
+            for j in range(len(MINUSCULAS_SPA_UNICODE)):
+                if MINUSCULAS_SPA_UNICODE[j] == texto[i]:
+                    nuevoTexto.append(MAYUSCULAS_SPA_UNICODE[j])
+    for i in range(len(nuevoTexto)):
+        salidaTexto+=nuevoTexto[i]
+    return salidaTexto
+
 def encuentra_chr(texto,letra):
     if len(letra)==1:
         for i in range(len(texto)):
             if texto[i]==letra:
                 return i
-            else:
-                return -1
-    else:
+                break
         return -1
 
 def encuentra_str(texto,cadena):
-    salida=False
-    if cadena in texto:
+    salida=-1
+    if cadena in texto and len(cadena) >= 2:
         for i in range(len(texto)):
-            if texto[i] == cadena[0]:
+            if texto[i]==cadena[0]:
                 for j in range(1,len(cadena)):
-                    if texto[i] == cadena[j]:
-                        pass
+                    if (texto[i+j]==cadena[j]):
+                        salida=i
+                        return i 
                     else:
-                        return i
-                        break  
+                        salida=-1   
+            else:
+                salida=-2
     else:
-        return -1
+        return salida
+
+
 
 def reemplaza_chr(texto,cadena1,cadena2):
     salida=[]
@@ -110,4 +108,11 @@ def reemplaza_chr(texto,cadena1,cadena2):
         salidaStr+=salida[i]
     return salidaStr
 
+def reemplaza_str(texto,cadena1,cadena2):
+    if len(cadena1) >= 1 and len(cadena2) >= 1:
+        
+        return encuentra_str(texto,cadena1) 
+    else:
+        return ""
 
+#print(reemplaza_str("hola","la","zs"))
