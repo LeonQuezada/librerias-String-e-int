@@ -130,4 +130,3 @@ def reemplaza_str(texto,cadena1,cadena2):
     else:
         return ""
 
-print(reemplaza_str("holass","la","zs"))
