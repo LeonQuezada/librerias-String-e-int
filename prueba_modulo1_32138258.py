@@ -1,6 +1,6 @@
 # Leon Edward Quezada Reyes
 # Matricula 32138258
-from modulo01_361772 import *
+from modulo01_32138258 import *
 
 print( "La constante MINUSCULAS_SPA_UNICODE tiene el siguiente valor:" )
 print( MINUSCULAS_SPA_UNICODE )
