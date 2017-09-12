@@ -2,6 +2,16 @@
 # Matricula 32138258
 from modulo01_32138258 import *
 
+#------Modulo que ayudo a la pruebas
+def my_strtr(cadena, reemplazo):    
+    """Reemplazo múltiple de cadenas en Python."""
+    import re
+    regex = re.compile("(%s)" % "|".join(map(re.escape, reemplazo.keys())))
+    return regex.sub(lambda x: str(reemplazo[x.string[x.start() :x.end()]]), cadena)
+
+#------ fin de Modulo que ayudo a la pruebas
+
+
 print("----------------------------------------------------------------")
 print( "La constante MINUSCULAS_SPA_UNICODE tiene el siguiente valor:" )
 print( MINUSCULAS_SPA_UNICODE )
@@ -149,13 +159,17 @@ print()
 A="hola como estas"
 B="que tal amigo"
 
-A1=reemplaza_chr(A,"o","z")
-B1=reemplaza_chr(B,"a","z")
+letra1="o"
+letra2="a"
+patron="z"
 
+A1=reemplaza_chr(A,letra1,patron)
+B1=reemplaza_chr(B,letra2,patron)
 
+A2=my_strtr(A,{'o':'z'})
+B2=my_strtr(B,{'a':'z'})
 print( "Demostramos ahora la función reemplaza_chr" )
-print( "Demostramos ahora la función encuentra_str" )
-print( "con los strings '",A,"' y '",B,"'"," Con el patron: ","'" ,C, "'", sep="")
+print( "con los strings '",A,"' y '",B,"'"," Con el patron: ","'" ,patron, "'"," Con el letra1: ","'" ,letra1, "'"," Con el letra2: ","'" ,letra2, "'", sep="")
 print( "Mi función genera '",A1,"' y '",B1,"'", sep="")
 print( "Usando str.upper genera '",A2,"' y '",B2,"'", sep="")
 print( "Correctos: "+str(A1==A2 and B1==B2) )
@@ -164,6 +178,25 @@ print()
 #----------------Fin Prueba 7---------------------
 
 #----------------Prueba 8---------------------
-print( "Demostramos ahora la función reemplaza_str" )
 
+A="hola como estas"
+B="que tal amigo"
+
+letra1="o"
+letra2="a"
+patron="z"
+
+A1=reemplaza_chr(A,letra1,patron)
+B1=reemplaza_chr(B,letra2,patron)
+
+A2=my_strtr(A,{'o':'z'})
+B2=my_strtr(B,{'a':'z'})
+
+print( "Demostramos ahora la función reemplaza_str" )
+print( "con los strings '",A,"' y '",B,"'"," Con el patron: ","'" ,patron, "'"," Con el letra1: ","'" ,letra1, "'"," Con el letra2: ","'" ,letra2, "'", sep="")
+print( "Mi función genera '",A1,"' y '",B1,"'", sep="")
+print( "Usando str.upper genera '",A2,"' y '",B2,"'", sep="")
+print( "Correctos: "+str(A1==A2 and B1==B2) )
+print("----------------------------------------------------------------")
+print()
 #----------------Fin Prueba 8---------------------

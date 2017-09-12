@@ -109,10 +109,25 @@ def reemplaza_chr(texto,cadena1,cadena2):
     return salidaStr
 
 def reemplaza_str(texto,cadena1,cadena2):
-    if len(cadena1) >= 1 and len(cadena2) >= 1:
-        
-        return encuentra_str(texto,cadena1) 
+    salidaStr=[]
+    textoSalida=""
+    if len(cadena1) >= 1 and len(cadena2) >= 1 and len(cadena1) == len(cadena2):
+        if encuentra_str(texto,cadena1) == -1:
+            return "chin"
+        else:
+            for i in range(encuentra_str(texto,cadena1)):
+                salidaStr.append(texto[i])
+
+            x=0
+            for i in range(encuentra_str(texto,cadena1),encuentra_str(texto,cadena1)+len(cadena1)):
+                salidaStr.append(cadena2[x])
+                x+=1
+            for i in range(len(salidaStr),len(texto)):      
+                salidaStr.append(texto[i])       
+            for i in range(len(salidaStr)):
+                textoSalida+=(salidaStr[i])
+            return textoSalida
     else:
         return ""
 
-#print(reemplaza_str("hola","la","zs"))
+print(reemplaza_str("holass","la","zs"))
